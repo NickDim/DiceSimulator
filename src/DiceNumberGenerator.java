@@ -1,4 +1,7 @@
 // Dice simulator
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 public class DiceNumberGenerator {
 	
 	public static void main(String[] args) {
@@ -17,16 +20,22 @@ public class DiceNumberGenerator {
 		
 		double finalRange = Math.ceil(rangeOfRollsFinal);
 		
-		for(int count = 0;count<numberOfRollsFinal; count ++) {
-			
-			double roll = Math.random() * finalRange;
+			try {
+			PrintWriter NumberSaver = new PrintWriter("C:\\Users\\nickd\\Desktop\\output.txt");
+			for(int count = 0;count<numberOfRollsFinal; count ++) {
+				
+				double roll = Math.random() * finalRange;
 
-			int rollFinal = (int) Math.floor(roll);
+				int rollFinal = (int) Math.floor(roll);
+			NumberSaver.println(rollFinal);
 			
-			int absoluteRollFinal = rollFinal + 1;
-		
-			System.out.println(absoluteRollFinal);
-			
+			}
+			NumberSaver.close();
+			}
+			catch (FileNotFoundException e) {
+	            e.printStackTrace();
+	        }
+			//System.out.println(rollFinal + 1);
+
 		}
 	}
-}
