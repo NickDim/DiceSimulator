@@ -16,9 +16,9 @@ public class DiceNumberGenerator {
 		
 		int numberOfRollsFinal = Integer.parseInt(numberOfRolls);
 		
-		int rangeOfRollsFinal = Integer.parseInt(rangeOfRolls);
+		double rangeOfRollsFinal = Double.parseDouble(rangeOfRolls);
 		
-		double finalRange = Math.ceil(rangeOfRollsFinal);
+		double finalRange = Math.floor(rangeOfRollsFinal);
 		
 			try {
 			PrintWriter NumberSaver = new PrintWriter("C:\\Users\\nickd\\Desktop\\output.txt");
@@ -35,7 +35,5 @@ public class DiceNumberGenerator {
 			catch (FileNotFoundException e) {
 	            e.printStackTrace();
 	        }
-			//System.out.println(rollFinal + 1);
-
 		}
 	}
