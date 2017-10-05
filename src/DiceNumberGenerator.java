@@ -49,9 +49,8 @@ public class DiceNumberGenerator {
             List.add(finalLine);
 			}
             
-            int i;
 			int sum = 0;
-			for(i = 1; i < List.size(); i++) {
+			for(int i = 1; i < List.size(); i++) {
 			    sum += List.get(i);
 			}  
 			int average = (sum / numberOfRollsFinal);
