@@ -27,6 +27,7 @@ public class DiceNumberGenerator {
 				int rollFinal = (int) Math.floor(roll);
 			NumberSaver.println(rollFinal);
 			List.add(rollFinal);
+			System.out.println(rollFinal);
 			
 			}
 			NumberSaver.close();
@@ -54,7 +55,7 @@ public class DiceNumberGenerator {
 			    sum += List.get(i);
 			}  
 			int average = (sum / numberOfRollsFinal);
-            System.out.println("The average number was" + average);
+            System.out.println("The average number was " + average);
             scanner.close();
             }
              catch (FileNotFoundException e) {
