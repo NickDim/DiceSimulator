@@ -50,7 +50,7 @@ public class DiceNumberGenerator {
 			}
             
 			int sum = 0;
-			for(int i = 1; i < List.size(); i++) {
+			for(int i = 0; i < List.size(); i++) {
 			    sum += List.get(i);
 			}  
 			int average = (sum / numberOfRollsFinal);
