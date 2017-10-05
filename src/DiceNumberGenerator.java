@@ -23,12 +23,11 @@ public class DiceNumberGenerator {
 			ArrayList<Integer> List = new ArrayList<Integer>(rangeOfRollsFinal);
 			
 			for(int count = 0;count<numberOfRollsFinal; count ++) {
-				double roll = Math.random();
-				int rollFinal = (int) Math.floor(roll);
+				double roll = Math.random() * rangeOfRollsFinal;
+				int rollFinal = (int) Math.floor(roll) + 1;
 			NumberSaver.println(rollFinal);
 			List.add(rollFinal);
 			System.out.println(rollFinal);
-			
 			}
 			NumberSaver.close();
 			}
@@ -54,8 +53,10 @@ public class DiceNumberGenerator {
 			    sum += List.get(i);
 			}  
 			int average = (sum / numberOfRollsFinal);
+			
             System.out.println("The average number was " + average);
             scanner.close();
+            
             }
              catch (FileNotFoundException e) {
             e.printStackTrace();
