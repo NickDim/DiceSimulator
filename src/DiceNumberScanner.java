@@ -26,8 +26,8 @@ public class DiceNumberScanner {
 			int average = (sum / numberOfRollsFinal);
                 
             }
-            
-        } catch (FileNotFoundException e) {
+        
+             catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
