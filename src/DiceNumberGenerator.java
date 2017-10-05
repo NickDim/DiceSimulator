@@ -10,52 +10,33 @@ public class DiceNumberGenerator {
 
 	public static void main(String[] args) {
 
-		String numberOfRolls = args[0];
-
-		String rangeOfRolls = args[1];
-
-		int numberOfRollsFinal = Integer.parseInt(numberOfRolls);
-
-		int rangeOfRollsFinal = Integer.parseInt(rangeOfRolls);
+		int numRolls = Integer.parseInt(args[0]);
+		int rollRange = Integer.parseInt(args[1]);
+		
+		PrintWriter numberSaver;
 
 		try {
-			PrintWriter NumberSaver = new PrintWriter("C:\\Users\\nickd\\Desktop\\output.txt");
+			numberSaver = new PrintWriter("C:\\Users\\nickd\\Desktop\\output.txt");
 
-			ArrayList<Integer> List = new ArrayList<Integer>(rangeOfRollsFinal);
+			ArrayList<Integer> list = new ArrayList<Integer>(numRolls);
 
-			for (int count = 0; count < numberOfRollsFinal; count++) {
-				double roll = Math.random() * rangeOfRollsFinal;
+			for (int count = 0; count < numRolls; count++) {
+				double roll = Math.random() * rollRange;
 				int rollFinal = (int) Math.floor(roll) + 1;
-				NumberSaver.println(rollFinal);
-				List.add(rollFinal);
+				list.add(rollFinal);
 				System.out.println(rollFinal);
 			}
-			NumberSaver.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		// Scanner to scan output file in order to find and analyze the data
-		File output = new File("C:\\Users\\nickd\\Desktop\\output.txt");
-		try {
-
-			ArrayList<Integer> List = new ArrayList<Integer>(rangeOfRollsFinal);
-
-			Scanner scanner = new Scanner(output);
-
-			while (scanner.hasNextLine()) {
-				String line = scanner.nextLine();
-				int finalLine = Integer.parseInt(line);
-				List.add(finalLine);
-			}
+			numberSaver.println(list);
 
 			int sum = 0;
-			for (int i = 0; i < List.size(); i++) {
-				sum += List.get(i);
+			for (int i : list) {
+				sum += list.get(i);
 			}
-			int average = (sum / numberOfRollsFinal);
+			int average = (sum / numRolls);
 
 			System.out.println("The average number was " + average);
-			scanner.close();
+			
+			numberSaver.close();
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
