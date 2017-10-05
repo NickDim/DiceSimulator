@@ -19,9 +19,10 @@ public class DiceNumberGenerator {
 		
 			try {
 			PrintWriter NumberSaver = new PrintWriter("C:\\Users\\nickd\\Desktop\\output.txt");
+			
+			ArrayList<Integer> List = new ArrayList<Integer>(rangeOfRollsFinal);
+			
 			for(int count = 0;count<numberOfRollsFinal; count ++) {
-				
-				ArrayList<Integer> List = new ArrayList<Integer>(rangeOfRollsFinal);
 				
 				double roll = Math.random();
 
