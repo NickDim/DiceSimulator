@@ -1,18 +1,41 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DiceNumberScanner {
 
 	public static void main(String[] args) {
+		Scanner scanner = openOutput("res/output.txt");
+		ArrayList<ArrayList<Integer>> runs = readFile(scanner);
+		System.out.println(format(runs));
+	}
+
+	private static String format(ArrayList<ArrayList<Integer>> runs) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < runs.size(); i++){
+			ArrayList<Integer> run = runs.get(i);
+			sb.append("Run Number " + i);
+			sb.append(" Average " + sumAndAverage(run));
+			sb.append("\n");
+		}
+		return sb.toString();
+	}
+
+	private static int sumAndAverage(ArrayList<Integer> intLine) {
+		int sum = 0;
+		for (int i : intLine) {
+			sum += i;
+		}
+		return sum / intLine.size();
+	}
+
+	private static ArrayList<ArrayList<Integer>> readFile(Scanner scanner) {
 		// Scanner to scan output file in order to find and analyze the data
-		File output = new File("C:\\Users\\nickd\\Desktop\\output.txt");
+
 		try {
 
 			ArrayList<ArrayList<Integer>> lines = new ArrayList<>();
 
-			Scanner scanner = new Scanner(output);
 			// reading output lines from file
 			int count = 1;
 			while (scanner.hasNextLine()) {
@@ -23,23 +46,26 @@ public class DiceNumberScanner {
 					intLine.add(Integer.parseInt(s));
 				}
 				lines.add(intLine);
-				int sum = 0;
-				StringBuilder sb = new StringBuilder();
-				for (int i = 0; i < intLine.size(); i++) {
-					
-					sum += intLine.get(i);
-				}
-				sb.append("Run Number" + count);
-				sb.append("Average:   " + sum / intLine.size());
-				System.out.println("Average:   " + sum / intLine.size());
-				count++;
 			}
+
 			scanner.close();
+			return lines;
 
-		}
 
-		catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
+		}
+	}
+
+	private static Scanner openOutput(String filename) {
+		try {
+			File output = new File(filename);
+			Scanner scanner = new Scanner(output);
+			return scanner;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

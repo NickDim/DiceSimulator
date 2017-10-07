@@ -15,14 +15,14 @@ public class DiceNumberGenerator {
 
             ArrayList<Integer> diceNums = rollADice(numRolls, rollRange);
             int avg = calculateAverage(diceNums, numRolls);
-            saveToFile(diceNums, avg);
+            saveToFile(diceNums);
     }
 
-    private static void saveToFile(ArrayList<Integer> diceNums, int avg) {
+    private static void saveToFile(ArrayList<Integer> diceNums) {
         PrintWriter numberSaver;
 
         try {
-            File output = new File("C:\\Users\\nickd\\Desktop\\output.txt");
+            File output = new File("res/output.txt");
             numberSaver = new PrintWriter(new FileWriter(output, true));
             numberSaver.println(diceNums);
             numberSaver.println(diceNums.toString());
@@ -54,7 +54,5 @@ public class DiceNumberGenerator {
             System.out.println(rollFinal);
         }
         return Nums;
-
     }
-
 }
