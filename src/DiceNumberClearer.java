@@ -1,5 +1,4 @@
 import java.io.PrintWriter;
-import java.io.File;
 
 public class DiceNumberClearer {
 	public static void main(String args[]) throws Exception{ 	
