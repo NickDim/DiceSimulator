@@ -13,7 +13,7 @@ public class DiceNumberGenerator {
             int numRolls = Integer.parseInt(args[0]);
             int rollRange = Integer.parseInt(args[1]);
 
-            ArrayList<Integer> diceNums = rollADice(numRolls, rollRange);
+            ArrayList<Integer> diceNums = rollDice(numRolls, rollRange);
             int avg = calculateAverage(diceNums, numRolls);
             saveToFile(diceNums);
     }
@@ -45,7 +45,7 @@ public class DiceNumberGenerator {
         return average;
     }
 
-    private static ArrayList<Integer> rollADice(int numRolls, double rollRange) {
+    private static ArrayList<Integer> rollDice(int numRolls, double rollRange) {
         ArrayList<Integer> Nums = new ArrayList<>();
         for (int count = 0; count < numRolls; count++) {
             double roll = Math.random() * rollRange;
